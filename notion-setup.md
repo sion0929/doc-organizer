@@ -15,7 +15,7 @@
 | 시험일지 | `skills/doc-organizer/templates/test-log.md` |
 | 회의록 | `skills/doc-organizer/templates/meeting.md` |
 | 구매물품 | `skills/doc-organizer/templates/purchase.md` |
-| 할 일 | `skills/doc-organizer/templates/todo.md` |
+| SUVLab Works | `skills/doc-organizer/templates/todo.md` |
 
 ## 만드는 순서
 

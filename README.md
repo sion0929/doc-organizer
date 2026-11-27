@@ -13,7 +13,7 @@
 | 4 | 시험일지 | 페이지 |
 | 5 | 회의록 | 페이지 |
 | 6 | 구매물품 | 표 (엑셀·노션 DB) |
-| 7 | 할 일 (실험 내용 정리 / 하드웨어 제작 / 시스템 설계 / 계획 구체화 / 시스템 구조도 / 점검 문서) | 페이지 |
+| 7 | SUVLab Works — 할 일 정리 (실험 내용 정리 / 하드웨어 제작 / 시스템 설계 / 계획 구체화 / 시스템 구조도 / 점검 문서) | 페이지 |
 
 ## 사용법 (Claude Code)
 
@@ -76,7 +76,7 @@ skills/doc-organizer/
 ├── SKILL.md                    진행 순서 · 출력 형식 · 노션 복붙 규칙
 ├── scripts/check_notion_md.py  노션에서 깨지는 문법 검사
 └── templates/                  유형별 양식 (① DB 속성 / ② 질문 / ③ 본문 뼈대 / ④ 작성 메모)
-    └── todo/                   할 일 분류별 양식 6개
+    └── todo/                   SUVLab Works 분류별 양식 6개
 tests/notion-paste-test.md      붙여넣기 확인용
 notion-setup.md                 노션 DB 만드는 법
 docs/superpowers/specs/         설계서
