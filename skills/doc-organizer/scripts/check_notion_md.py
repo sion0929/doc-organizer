@@ -33,7 +33,8 @@ RULES = [
     (re.compile(r"^\s*>\s*\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]", re.I), "콜아웃", "> [!NOTE] 콜아웃은 변환 안 됨 → 일반 인용 >"),
     (re.compile(r"\t"), "탭문자", "탭 대신 공백 4칸"),
 ]
-PLACEHOLDER_RE = re.compile(r"\{[^{}\n]*[가-힣][^{}\n]*\}")
+PLACEHOLDER_RE = re.compile(r"\{[^{}\n]+\}")
+SINGLE_TILDE_RE = re.compile(r"(?<!~)~(?!~)")
 
 
 def split_cells(line):
@@ -126,6 +127,10 @@ def check(numbered, template_mode):
                 add(no, "채울자리잔여", "{채울 내용} 표시가 남아 있음 → 내용 또는 ⚠️ 확인 필요")
         if HEADING_RE.match(line) and prev.strip():
             add(no, "제목앞빈줄", "제목 앞에 빈 줄 필요")
+        if HEADING_RE.match(prev) and line.strip():
+            add(no, "제목뒤빈줄", "제목 다음 줄은 빈 줄이어야 함")
+        if len(SINGLE_TILDE_RE.findall(scan)) >= 2:
+            add(no, "물결표", "한 줄에 ~ 가 두 개면 노션이 취소선으로 바꿀 수 있음 → 범위는 – 또는 '부터/까지'로")
         lm = LIST_RE.match(line)
         if lm and len(lm.group(1)) % 4:
             add(no, "들여쓰기", "목록 들여쓰기는 공백 4칸 단위")
@@ -159,6 +164,11 @@ def main(argv):
         else:
             numbered = list(enumerate(lines, 1))
         problems = check(numbered, template_mode)
+        if not template_mode:
+            for no, line in numbered:
+                if re.match(r"^`{4,}", line) or re.match(r"^\s*\|\s*속성\s*\|\s*값\s*\|", line):
+                    problems.append((no, "본문만저장", "속성 표나 바깥 ```` 코드 블록이 들어 있음 → 파일에는 본문만 저장"))
+                    break
         for no, rule, msg in sorted(problems):
             print(f"{path}:{no}: [{rule}] {msg}")
         total += len(problems)
