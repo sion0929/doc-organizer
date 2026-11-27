@@ -31,6 +31,16 @@ Claude Code에서 `/doc-organizer` 를 입력하거나 "문서 정리해줘", "�
 
 > 터미널 화면을 드래그해서 복사하면 줄바꿈·마크다운 기호가 깨질 수 있다. 저장된 파일이나 클립보드를 쓴다.
 
+## 시험일지 로그 그래프 (PlotJuggler)
+
+시험일지에 PX4 로그(`.ulg`) 경로를 주면 `scripts/pj_layout.py` 가 로그에서 각속도 추종 오차가 가장 큰 구간을 찾아
+PlotJuggler 창을 **문제 구간 탭**(모터 출력 · 각속도 목표·실제 · 자세 목표·실제)으로 열고, 계산한 수치를 분석에 넣는다.
+캡처는 직접 해서 노션 📷 자리에 붙인다. 필요: pyulog, numpy, PlotJuggler — 없으면 설치 허락을 묻고, 거절하면 그래프는 생략.
+
+```bash
+python3 skills/doc-organizer/scripts/pj_layout.py 로그.ulg --axis roll --out 레이아웃.xml --open
+```
+
 ## 처음 한 번: 노션 붙여넣기 확인
 
 [tests/notion-paste-test.md](tests/notion-paste-test.md) 내용을 노션 빈 페이지에 붙여넣어서,
