@@ -87,6 +87,7 @@ codex exec --skip-git-repo-check -C <이미지 폴더> -s workspace-write [-i <�
 - 화살표는 **아래 층 → 위 층** 방향으로 쓴다: `{아래} --> {위}`, 양방향은 `{아래} <--> {위}`. 화살표 방향이 배치를 거꾸로 만들면 방향 없는 선 `---` 에 라벨을 단다.
 - `A <-- B` 는 Mermaid 문법이 아니다(렌더링 오류). 쓰지 않는다.
 - 같은 층 안 노드끼리의 화살표는 층을 비뚤게 만들므로 꼭 필요할 때만 쓴다.
+- 칸 안의 **연결 없는 상자들을 세로로 쌓으려면** 그 칸을 `direction LR` 로 둔다(TB면 가로로 늘어서 그림이 너무 넓어진다). 노드 아키텍처의 입력·실패 처리 칸이 이 경우다.
 - 시스템 칸 사이 연결은 노드가 아니라 **subgraph끼리** 잇는다(`UAV <-->|"Link A · Zenoh"| GCS`). 칸 순서는 이 연결 순서로 정해진다(UAV → GCS → UGV 순으로 이으면 그 순서로 놓인다).
 - 노드 ID는 영문·숫자(`U1`, `R1`, `G1`), 라벨은 큰따옴표 안에. 줄바꿈은 `<br/>`.
 - 순서도(sequenceDiagram)에서 `;` 를 쓰지 않는다(문장 구분자로 읽힌다). 내부 동작은 `Note over` 로 쓴다.
@@ -208,7 +209,7 @@ flowchart LR
 ```mermaid
 flowchart LR
     subgraph IN["입력 (Inputs)"]
-        direction TB
+        direction LR
         I1["① {입력 이름}<br/>{토픽 · 형식}"]
         I2["② {입력 이름}<br/>{토픽 · 형식}"]
     end
@@ -224,6 +225,7 @@ flowchart LR
         O1["{출력 토픽}<br/>{형식 · 주기}"]
     end
     subgraph FAIL["신뢰도·실패 처리"]
+        direction LR
         F1["{조건} → {동작}"]
     end
     C1["{받는 노드}"]
