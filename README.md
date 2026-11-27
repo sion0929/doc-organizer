@@ -41,6 +41,16 @@ PlotJuggler 창을 **문제 구간 탭**(모터 출력 · 각속도 목표·실�
 python3 skills/doc-organizer/scripts/pj_layout.py 로그.ulg --axis roll --out 레이아웃.xml --open
 ```
 
+## 다이어그램 (아키텍처·노드 개념도)
+
+`templates/diagrams.md` 형식으로 그린다: 전체 시스템 아키텍처(시스템별 칸 × 미션 관리/업무 수행/인지/센서 입력 층), 통신 아키텍처, 임무 흐름, 노드 아키텍처(입력 → 처리 → 출력).
+- Mermaid: 노션에서 그림으로 보인다. `scripts/render_mermaid.py` 로 렌더링 오류를 검사하고 PNG도 만든다(헤드리스 Chrome).
+- ChatGPT 이미지: `codex login status` 가 ChatGPT 로그인이면 Codex의 image_generation으로 같은 형식의 그림을 만든다. 로그인이 없으면 Mermaid만.
+
+## 개발 문서 = 기술개발계획서 초안
+
+개발 문서(3)는 한국로봇항공기경연대회 기술개발계획서(중급부문) 목차를 양식으로 쓴다. 최종본은 PDF, Skill은 md 초안을 만든다. 노드마다 개념도 + 입력/처리/출력/실패 처리.
+
 ## 처음 한 번: 노션 붙여넣기 확인
 
 [tests/notion-paste-test.md](tests/notion-paste-test.md) 내용을 노션 빈 페이지에 붙여넣어서,

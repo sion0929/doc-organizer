@@ -50,6 +50,39 @@ flowchart LR
     B --> C["지상국"]
 ```
 
+## Mermaid 층 구조 (subgraph · 색) — 칸 안에 층 상자가 쌓여 보이면 정상
+
+```mermaid
+flowchart LR
+    subgraph A["시스템 A · 컴퓨터 · OS"]
+        direction BT
+        subgraph A_M["미션 관리"]
+            A1["mission_manager"]
+        end
+        subgraph A_P["인지"]
+            A2["detector"]
+        end
+        A2 --> A1
+    end
+    subgraph B["시스템 B"]
+        B1["node"]
+    end
+    A <-->|"Link · 방식"| B
+    style A fill:#e8f2fd,stroke:#42a5f5,stroke-width:2px
+    style A_M fill:#fff4ee,stroke:#ef9a9a,stroke-dasharray:5 5
+```
+
+## Mermaid 순서도 (sequenceDiagram)
+
+```mermaid
+sequenceDiagram
+    participant G as GCS
+    participant A as UAV
+    G->>A: PREPARE
+    A-->>G: READY
+    Note over A: 이륙
+```
+
 ## 자리 표시
 
 - 📷 [그림: 그림 자리 표시 — 노션에서 직접 첨부]
