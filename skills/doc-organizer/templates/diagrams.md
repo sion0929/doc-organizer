@@ -249,6 +249,32 @@ flowchart LR
     style FAIL fill:#fff1f1,stroke:#ef9a9a,stroke-dasharray:5 5
 ```
 
+### 간단 핵심 그림 (노션 정리 페이지용)
+
+노션 정리 페이지의 부분별 핵심 그림은 이름만 쓰는 간단한 모양으로 그린다(형식·주기·파라미터·수식 없음). 입력은 칸 없이 모아서 첫 단계로 잇는다(`I1 & I2 --> P1`, 세로로 쌓인다).
+
+```mermaid
+flowchart LR
+    I1["{입력 이름}"]
+    I2["{입력 이름}"]
+    P1["1. {핵심 단계}"]
+    P2["2. {핵심 단계}"]
+    P3["3. {핵심 단계}"]
+    O1["{출력 이름}"]
+    C1["{받는 곳}"]
+    I1 & I2 --> P1
+    P1 --> P2 --> P3
+    P3 --> O1 --> C1
+    classDef inp fill:#d6e8fb,stroke:#42a5f5,color:#0d47a1
+    classDef proc fill:#c8ece6,stroke:#26a69a,color:#004d40
+    classDef outp fill:#ffe3c2,stroke:#fb8c00,color:#e65100
+    classDef recv fill:#eeeeee,stroke:#9e9e9e,color:#212121
+    class I1,I2 inp
+    class P1,P2,P3 proc
+    class O1 outp
+    class C1 recv
+```
+
 ### 임무 흐름
 
 ```mermaid
