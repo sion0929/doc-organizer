@@ -124,7 +124,7 @@ def check(numbered, template_mode):
             if "%%" in scan:
                 add(no, "양식표시잔여", "%% 안내 %% 표시가 남아 있음")
             if PLACEHOLDER_RE.search(scan):
-                add(no, "채울자리잔여", "{채울 내용} 표시가 남아 있음 → 내용 또는 ⚠️ 확인 필요")
+                add(no, "채울자리잔여", "{채울 내용} 표시가 남아 있음 → 내용 또는 ➕ 추가 권장")
         if HEADING_RE.match(line) and prev.strip():
             add(no, "제목앞빈줄", "제목 앞에 빈 줄 필요")
         if HEADING_RE.match(prev) and line.strip():
